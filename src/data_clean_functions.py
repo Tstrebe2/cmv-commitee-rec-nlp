@@ -1,5 +1,8 @@
-# Databricks notebook source
 import re
+import pandas as pd
+
+def normalize_new_lines(string):
+    return "\n".join(string.splitlines())
 
 # COMMAND ----------
 
@@ -223,7 +226,7 @@ def clean_table_of_content(reports_TOC, k):
 
 # use article titles to find articles and their page numbers
 # report_i = reports[(reports['Year'] == reports_TOC.loc[0]['Year']) & (reports['IsTableOfContents1'] == 0)].reset_index(drop=True)
-def get_report_one_year(reports_TOC, k):
+def get_report_one_year(reports, reports_TOC, k):
     return reports[(reports['Year'] == reports_TOC['Year'][k]) ].reset_index(drop=True)
 
 # COMMAND ----------
@@ -335,8 +338,8 @@ def match_title_text(pageNum, titleStart, matchedTitle, report_i):
 
 # COMMAND ----------
 
-def separate_text_into_articles(reports_TOC, k):
-    report_i = get_report_one_year(reports_TOC, k)
+def separate_text_into_articles(reports, reports_TOC, k):
+    report_i = get_report_one_year(reports, reports_TOC, k)
 #     print(len(report_i))
     articleTitles = clean_table_of_content(reports_TOC, k)
 #     print(len(articleTitles))
