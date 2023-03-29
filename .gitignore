@@ -1,4 +1,8 @@
+env
 all-mpnet-base-v2
+recommendation_clusters
+recommendation_parameter_tuning
+CMV_Reports*.csv
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
